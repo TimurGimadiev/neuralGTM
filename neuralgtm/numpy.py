@@ -1,10 +1,28 @@
+# -*- coding: utf-8 -*-
+#
+#  Copyright 2018-2020 Amane Suzuki <amane.suzu@gmail.com>
+#  This file is part of neuralGTM.
+#
+#  neuralGTM is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 3 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#  GNU Lesser General Public License for more details.
+#
+#  You should have received a copy of the GNU Lesser General Public License
+#  along with this program; if not, see <https://www.gnu.org/licenses/>.
+#
 import numpy as np
 from scipy.spatial.distance import cdist
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.decomposition import PCA
 
 
-class GTM(BaseEstimator, TransformerMixin):
+class nGTM(BaseEstimator, TransformerMixin):
     def __init__(self, n_components=2, n_rbfs=10, sigma=1, alpha=1e-3, n_grids=20, method='mean',
                  max_iter=10, tol=1e-3, random_state=None, verbose=False):
         self.n_components = n_components
@@ -88,3 +106,6 @@ class GTM(BaseEstimator, TransformerMixin):
         d = cdist(Xt, self.rbfs, 'sqeuclidean')
         phi = np.exp(-d / (2 * self.sigma))
         return phi.dot(self.W)
+
+
+__all__ = ['nGTM']

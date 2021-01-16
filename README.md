@@ -24,7 +24,7 @@ $ pip install -U pygtm
 The pygtm package inherits scikit-learn classes.
 
 ```python
-from pygtm import GTM
+from neuralgtm import GTM
 from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import make_pipeline
